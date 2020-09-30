@@ -16,7 +16,7 @@ import com.revolve44.mosmetro2.R;
 import java.util.LinkedList;
 
 /**
- * Created by dd on 09.05.2017.
+ * Adapter for Lines
  */
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
