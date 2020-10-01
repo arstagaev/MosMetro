@@ -19,8 +19,8 @@ import java.util.LinkedList;
  * Adapter for Lines
  */
 
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    private static DataAdapter.ClickListener clickListener;
+public class LineAdapter extends RecyclerView.Adapter<LineAdapter.ViewHolder> {
+    private static LineAdapter.ClickListener clickListener;
     private LinkedList<String> cellx;
     private  String nameLn;
     private final String l1 = "Калу";
@@ -44,19 +44,19 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private final String l17 = "Замо";
 
 
-    public DataAdapter(LinkedList<String> android) {
+    public LineAdapter(LinkedList<String> android) {
         this.cellx = android;
     }
 
 
     @Override
-    public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LineAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_row,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(DataAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(LineAdapter.ViewHolder holder, final int position) {
         holder.tv_name.setText(cellx.get(position));
 
          nameLn= cellx.get(position).substring(0,4);
@@ -117,26 +117,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             // holder.tv_name.setTextColor(Color.BLACK);
             holder.cardView.setCardBackgroundColor(Color.parseColor("#0b7000"));
         }
-
-//        switch (nameLn){
-//            case "Некрасовская линия":
-//
-//                holder.cardView.setCardBackgroundColor(Color.RED);
-//            case "Серпуховско-Тимирязевская линия":
-//                holder.cardView.setCardBackgroundColor(Color.BLUE);
-//
-//        }
-////        switch (position){
-//            case 0:
-//                holder.cardView.setCardBackgroundColor(Color.RED);
-//            case 1:
-//                holder.cardView.setCardBackgroundColor(Color.BLUE);
-//
-//        }
-
-//        holder.tv_version.setText(cellx.get(position).getVer());
-//        holder.tv_api_level.setText(cellx.get(position).getApi());
-
     }
 
     @Override
@@ -171,8 +151,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         }
     }
 
-    public void setOnItemClickListener(DataAdapter.ClickListener clickListener) {
-        DataAdapter.clickListener = clickListener;
+    public void setOnItemClickListener(LineAdapter.ClickListener clickListener) {
+        LineAdapter.clickListener = clickListener;
         notifyDataSetChanged();
     }
 

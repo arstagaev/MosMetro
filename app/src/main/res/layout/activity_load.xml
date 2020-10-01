@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/loadingtv"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="LOADING"
-        android:textSize="60dp"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryDark">
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-    </TextView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/mosmetro">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="Московский метрополитен">
+
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            tools:layout_editor_absoluteX="171dp"
+            tools:layout_editor_absoluteY="553dp"
+            android:outlineAmbientShadowColor="#9C27B0"
+            android:progressBackgroundTint="#FF0000"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/loadingtv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="LOADING"-->
+<!--        android:textSize="60dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/colorPrimaryDark">-->
+
+<!--    </TextView>-->
+
+
+
+</LinearLayout>

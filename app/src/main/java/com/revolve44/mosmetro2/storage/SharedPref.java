@@ -37,14 +37,24 @@ public class SharedPref {
     }
 
 
-    public static void setHash(String hash, Context context){
+    public static void setTreeMap1(String hash, Context context){
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("hash", hash);
         editor.apply();
     }
-    public static String getHash(Context context){
+    public static String getTreeMap1(Context context){
         return preferences.
                 getString("hash", "zero");
+    }
+
+    public static void setTreeMap2(String hash, Context context){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("hash2", hash);
+        editor.apply();
+    }
+    public static String getTreeMap2(Context context){
+        return preferences.
+                getString("hash2", "zero");
     }
 
     public static int getCount(Context context) {

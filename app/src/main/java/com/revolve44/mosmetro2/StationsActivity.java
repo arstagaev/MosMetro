@@ -15,15 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.revolve44.mosmetro2.adapters.StationAdapterX;
+import com.revolve44.mosmetro2.adapters.StationAdapter;
+import com.revolve44.mosmetro2.network.Api;
 import com.revolve44.mosmetro2.storage.SharedPref;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class ActivityLine extends AppCompatActivity {
+public class StationsActivity extends AppCompatActivity {
 
     /*
     Here we are may see list of stations of Moscow Subway
@@ -32,11 +33,11 @@ public class ActivityLine extends AppCompatActivity {
      */
 
     private RecyclerView recyclerView;
-    private StationAdapterX adapter;
-    private ArrayList<String> data2 = new ArrayList<>();
+    private StationAdapter adapter;
 
-    //Map<String, String> alldata = new HashMap<>();
-    String finalJson;
+    private ArrayList<String> listOfStations = new ArrayList<>();
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -53,43 +54,24 @@ public class ActivityLine extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void run() {
-                //Do something after 100ms
-
                 buildcards();
-
             }
         }, 1000);
     }
 
     private void preparestart() {
-        String name = getIntent().getStringExtra(MainActivity.EXTRA_NAME);
+        String name = getIntent().getStringExtra(Api.EXTRA_NAME);
+        listOfStations = getIntent().getStringArrayListExtra(Api.EXTRA_ST);
+        Log.d("order3",""+listOfStations);
         //Toast.makeText(getApplicationContext(), ""+ name, Toast.LENGTH_LONG).show();
+        setTitle(""+name);
+
         assert name != null;
         if (name.equals("Московское центральное кольцо")){
             Snackbar.make(findViewById(android.R.id.content),"Выбрано "+name,Snackbar.LENGTH_SHORT).show();
         }else {
             Snackbar.make(findViewById(android.R.id.content),"Выбрана "+name,Snackbar.LENGTH_SHORT).show();
         }
-
-
-        finalJson = SharedPref.getHash(getApplicationContext());
-        //get from shared prefs
-        Gson gson = new Gson();
-        java.lang.reflect.Type type = new TypeToken<HashMap<String, String>>(){}.getType();
-        HashMap<String, String> alldata = gson.fromJson(finalJson, type);
-
-        for (Map.Entry<String, String> entry : alldata.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            if (value.equals(name)){
-                data2.add(key);
-            }
-
-            // ...
-        }
-        Log.d("777", ""+data2);
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -103,18 +85,9 @@ public class ActivityLine extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void buildcards() {
-//        ArrayList<String> list1 = new ArrayList<String>();
-//        Collections.addAll(list1, copy);
-        //List<String> list1 = new ArrayList<String>();
-        //Collections.addAll(data, lines2);
 
-
-        //data = list1;
-        adapter = new StationAdapterX(data2);
+        adapter = new StationAdapter(listOfStations);
         recyclerView.setAdapter(adapter);
 
-
-       // Log.d("zv",""+ Arrays.toString(names2));
-        Log.d("zv2",""+data2 +"[ size = "+data2.size());
     }
 }
