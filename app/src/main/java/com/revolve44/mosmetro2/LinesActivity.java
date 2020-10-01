@@ -142,6 +142,7 @@ public class LinesActivity extends AppCompatActivity {
 
         adapter = new LineAdapter(linkList);
         recyclerView.setAdapter(adapter);
+        SharedPref.setCheckData(true, getApplicationContext());
 
         Log.d("zv",""+ Arrays.toString(lines2));
         Log.d("zv2",""+usrAll +"[ size = "+usrAll.size());
@@ -153,7 +154,7 @@ public class LinesActivity extends AppCompatActivity {
 
                 String selectedline = usrAll.get(position);
 
-                ArrayList<String> StationsInOrder = new ArrayList<>();
+                //ArrayList<String> StationsInOrder = new ArrayList<>();
 
                 //get from shared prefs
                 json2 = SharedPref.getTreeMap2(getApplicationContext());
@@ -197,7 +198,6 @@ public class LinesActivity extends AppCompatActivity {
 
 
                 // Send Name of Line
-                Log.d("idorder"," "+StationsInOrder);
 
                 Intent goaway3 = new Intent(getApplicationContext(), StationsActivity.class);
                 goaway3.putExtra(EXTRA_NAME, usrAll.get(position));

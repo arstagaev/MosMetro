@@ -100,6 +100,8 @@ public class Api {
 
                 SharedPref.setTreeMap1(json,ctx);
                 SharedPref.setTreeMap2(json2,ctx);
+
+                SplashActivity.offline = false;
             }
 
 

@@ -69,6 +69,16 @@ public class SharedPref {
         editor.apply();
     }
 
+    public static void setCheckData(Boolean success, Context context){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("success", success);
+        editor.apply();
+    }
+    public static Boolean getCheckData(Context context){
+        return preferences.
+                getBoolean("success", false);
+    }
+
 
 
 
