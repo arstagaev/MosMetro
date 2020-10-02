@@ -1,5 +1,4 @@
-# FBS-Forecasting
-:satellite: Retrofit, :earth_africa: Google Maps API, :calling: Fragments. Solar panel forecasting app. version 0.2.3
+# Two lists that take data from the API
 
 
 <table style= padding:10px">
